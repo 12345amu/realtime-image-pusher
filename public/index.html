@@ -15,8 +15,14 @@
   };
     socket.onmessage = (event) => {
     const data = JSON.parse(event.data);
-  };
-  
+  }
+      const container = document.createElement('div');
+    container.className = 'image-container';
+
+    const img = document.createElement('img');
+    img.src = data.image + '?t=' + Date.now();
+
+
 
 </script>
 
