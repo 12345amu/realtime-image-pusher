@@ -1,0 +1,13 @@
+{
+  "name": "realtime-image-pusher",
+  "version": "1.0.0",
+  "description": "Push new images to client in real time using Express and WebSocket",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "ws": "^8.18.2"
+  }
+}
