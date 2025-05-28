@@ -10,6 +10,14 @@
 
   <script>
   const socket = new WebSocket(`ws://${location.host}`);
+    socket.onopen = () => {
+    console.log('Connected to WebSocket');
+  };
+    socket.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+  };
+
+
 </script>
 
 </body>
