@@ -10,19 +10,28 @@
 
   <script>
   const socket = new WebSocket(`ws://${location.host}`);
-    socket.onopen = () => {
-    console.log('Connected to WebSocket');
-  };
+   
     socket.onmessage = (event) => {
     const data = JSON.parse(event.data);
   }
-      const container = document.createElement('div');
+    const container = document.createElement('div');
     container.className = 'image-container';
 
     const img = document.createElement('img');
     img.src = data.image + '?t=' + Date.now();
 
+    const timeLabel = document.createElement('div');
+    const time = new Date(data.time);
+    timeLabel.textContent = `Received at: ${time.toLocaleString()}`;
+    timeLabel.className = 'time-label';
 
+    container.appendChild(img);
+    container.appendChild(timeLabel);
+
+
+ socket.onopen = () => {
+    console.log('Connected to WebSocket');
+  };
 
 </script>
 
