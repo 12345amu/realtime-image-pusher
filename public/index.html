@@ -7,5 +7,10 @@
   <h1>Real-Time Image Feed</h1>
   <p>New images will appear every 30 seconds if available.</p>
   <div id="images"></div>
+
+  <script>
+  const socket = new WebSocket(`ws://${location.host}`);
+</script>
+
 </body>
 </html>
