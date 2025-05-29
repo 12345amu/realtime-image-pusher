@@ -32,3 +32,8 @@ wss.on('connection', (ws) => {
 });
 
 const copiedFiles = new Set();
+function getImages(dir) {
+  return fs.existsSync(dir)
+    ? fs.readdirSync(dir).filter(file => /\.(jpg|jpeg|png|gif)$/i.test(file))
+    : [];
+}
