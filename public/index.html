@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Real-Time Image Viewer</title>
+  
 </head>
 <body>
   <h1>Real-Time Image Feed</h1>
@@ -11,9 +12,9 @@
   <script>
   const socket = new WebSocket(`ws://${location.host}`);
    
-    socket.onmessage = (event) => {
+  socket.onmessage = (event) => {
     const data = JSON.parse(event.data);
-  }
+  
     const container = document.createElement('div');
     container.className = 'image-container';
 
@@ -28,12 +29,12 @@
     container.appendChild(img);
     container.appendChild(timeLabel);
 
+    document.getElementById('images').prepend(container);
+  };
 
  socket.onopen = () => {
     console.log('Connected to WebSocket');
   };
-
-    document.getElementById('images').prepend(container);
 
 </script>
 
