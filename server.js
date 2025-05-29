@@ -71,5 +71,8 @@ function copyNextImage() {
     console.error(`Error copying ${next}:`, err);
   }
 }
+console.log(`Watching folder and copying images every 30 seconds from: ${inputFolder}`);
+setInterval(copyNextImage, 30 * 1000);
+
 
 
