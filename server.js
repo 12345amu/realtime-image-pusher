@@ -44,11 +44,27 @@ function copyNextImage() {
     return;
   }
 
-    const next = images[0];
+  const next = images[0];
   const srcPath = path.join(inputFolder, next);
   const destPath = path.join(outputFolder, next);
 
   try {
     fs.copyFileSync(srcPath, destPath);
     copiedFiles.add(next);
+    
+    const imageUrl = `/images/${next}`;
+    const now = new Date();
+    const payload = JSON.stringify({
+      image: imageUrl,
+      time: now.toISOString()
+    });
+
+    for (let client of clients) {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send(payload);
+      }
+    }
+
+    console.log(`Copied & Pushed: ${next} at ${now.toLocaleString()}`);
+
 
