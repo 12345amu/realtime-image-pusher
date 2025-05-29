@@ -43,3 +43,12 @@ function copyNextImage() {
     console.log('No new images to copy');
     return;
   }
+
+    const next = images[0];
+  const srcPath = path.join(inputFolder, next);
+  const destPath = path.join(outputFolder, next);
+
+  try {
+    fs.copyFileSync(srcPath, destPath);
+    copiedFiles.add(next);
+
