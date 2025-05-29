@@ -37,3 +37,9 @@ function getImages(dir) {
     ? fs.readdirSync(dir).filter(file => /\.(jpg|jpeg|png|gif)$/i.test(file))
     : [];
 }
+function copyNextImage() {
+  const images = getImages(inputFolder).filter(f => !copiedFiles.has(f));
+  if (images.length === 0) {
+    console.log('No new images to copy');
+    return;
+  }
