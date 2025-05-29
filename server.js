@@ -51,7 +51,7 @@ function copyNextImage() {
   try {
     fs.copyFileSync(srcPath, destPath);
     copiedFiles.add(next);
-    
+
     const imageUrl = `/images/${next}`;
     const now = new Date();
     const payload = JSON.stringify({
@@ -66,5 +66,10 @@ function copyNextImage() {
     }
 
     console.log(`Copied & Pushed: ${next} at ${now.toLocaleString()}`);
+  }
+  catch (err) {
+    console.error(`Error copying ${next}:`, err);
+  }
+}
 
 
